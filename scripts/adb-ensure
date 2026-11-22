@@ -1,0 +1,45 @@
+#!/usr/bin/env bash
+# Make sure adb reaches the host phone on port 5555.
+# 1) try 5555; 2) else find the Wireless-debugging TLS port, connect (VM is paired),
+#    run `adb tcpip 5555`, and reconnect on 5555.
+set -u
+HOST=$(ip route | awk '/default/{print $3; exit}')
+quiet=${1:-}
+log() { [ "$quiet" = "-q" ] || echo "adb-ensure: $*"; }
+
+ok5555() { adb -s "$HOST:5555" shell true >/dev/null 2>&1; }
+
+adb start-server >/dev/null 2>&1
+adb connect "$HOST:5555" >/dev/null 2>&1
+if ok5555; then log "connected on $HOST:5555"; exit 0; fi
+adb disconnect "$HOST:5555" >/dev/null 2>&1
+
+log "5555 not up; looking for the Wireless debugging port…"
+PORTS=$(nmap -Pn -T5 --min-rate 5000 -p 30000-50000 --open "$HOST" -oG - 2>/dev/null \
+       | grep -oE '[0-9]+/open' | cut -d/ -f1)
+if [ -z "$PORTS" ]; then
+  log "no Wireless debugging port found; turn on Developer options > Wireless debugging"
+  exit 1
+fi
+
+PORT=""
+for p in $PORTS; do   # other services may listen here too; use the one adb accepts
+  adb connect "$HOST:$p" >/dev/null 2>&1
+  sleep 1
+  if adb -s "$HOST:$p" shell true >/dev/null 2>&1; then PORT=$p; break; fi
+  adb disconnect "$HOST:$p" >/dev/null 2>&1
+done
+if [ -z "$PORT" ]; then
+  log "open ports ($PORTS) but none authorized (pair once: adb pair $HOST:<pair-port> <code>)"
+  exit 1
+fi
+
+adb -s "$HOST:$PORT" tcpip 5555 >/dev/null 2>&1
+adb disconnect "$HOST:$PORT" >/dev/null 2>&1
+for i in 1 2 3 4 5 6; do
+  sleep 1
+  adb connect "$HOST:5555" >/dev/null 2>&1
+  if ok5555; then log "re-enabled and connected on $HOST:5555"; exit 0; fi
+done
+log "tcpip 5555 issued but connect failed"
+exit 1
