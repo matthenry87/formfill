@@ -30,8 +30,8 @@ host phone. formfill then forwards Chrome's DevTools socket and drives the open
 tab directly: one script reads every field and fills them all at once, instead
 of an agent tapping through the screen.
 
-No computer or USB cable is needed. Wi-Fi isn't needed either (see
-[Wi-Fi](#wi-fi)).
+No computer or USB cable is needed. Day to day, Wi-Fi isn't needed either; after a
+reboot you need it once, briefly (see [Wi-Fi](#wi-fi)).
 
 ## Setup
 
@@ -141,10 +141,19 @@ formfill scan
 ```
 
 ## Wi-Fi
-Not required. The VM reaches the phone over the VM's own virtual network
-(the default gateway), not over Wi-Fi. Pairing, connecting and filling have all
-been done with Wi-Fi off. The form page itself just needs internet, and mobile
-data works.
+The VM reaches the phone over its own virtual network (the default gateway),
+not over Wi-Fi. Tested on a Pixel with Android 17:
+
+| | Needs Wi-Fi? |
+|---|---|
+| adb on port **5555** (what formfill uses) | **No.** It keeps working with Wi-Fi off, and even with Wireless debugging off. |
+| **Wireless debugging** (pairing, and the port `adb-ensure` uses to re-enable 5555) | **Yes.** It only runs while Wi-Fi is *connected* to a network. Turning Wi-Fi off stops it, and turning it on with Wi-Fi off saves the setting but doesn't start it. It starts by itself once Wi-Fi connects. |
+
+So once 5555 is up, formfill works on mobile data with no Wi-Fi. A **reboot**
+drops 5555, and getting it back needs Wireless debugging, so after a reboot:
+connect to any Wi-Fi briefly (it doesn't need internet), open the Terminal (or run
+`adbc`), and then you can turn Wi-Fi off again. Do this right after a reboot,
+not at the doctor's office.
 
 Note that adbd on port 5555 listens on **every** interface, including any Wi-Fi
 network the phone joins. A stranger's computer would still need you to accept
