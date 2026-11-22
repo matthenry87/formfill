@@ -147,7 +147,7 @@ not over Wi-Fi. Tested on a Pixel with Android 17:
 | | Needs Wi-Fi? |
 |---|---|
 | adb on port **5555** (what formfill uses) | **No.** It keeps working with Wi-Fi off, and even with Wireless debugging off. |
-| **Wireless debugging** (pairing, and the port `adb-ensure` uses to re-enable 5555) | **Yes.** It only runs while Wi-Fi is *connected* to a network. Turning Wi-Fi off stops it, and turning it on with Wi-Fi off saves the setting but doesn't start it. It starts by itself once Wi-Fi connects. |
+| **Wireless debugging** (pairing, and the port `adb-ensure` uses to re-enable 5555) | **Yes.** It only runs while Wi-Fi is *connected* to a network; Wi-Fi switched on but not connected isn't enough. Turning Wi-Fi off stops it, and turning it on with Wi-Fi off saves the setting but doesn't start it. It starts by itself once Wi-Fi connects. |
 
 So once 5555 is up, formfill works on mobile data with no Wi-Fi. A **reboot**
 drops 5555, and getting it back needs Wireless debugging, so after a reboot:
