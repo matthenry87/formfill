@@ -1,0 +1,92 @@
+# formfill profile. Fill in what you know; leave the rest blank.
+# Dates: YYYY-MM-DD. Lists: one "- item" per line.
+name:
+  first:
+  middle:
+  last:
+  preferred:
+  previous:          # maiden or former name
+dob:                 # YYYY-MM-DD
+sex:                 # as on insurance: Male / Female
+gender_identity:
+pronouns:
+marital_status:      # Single / Married / ...
+ssn_last4:           # only the last 4; leave blank if you'd rather type it
+language: English
+race:
+ethnicity:
+
+contact:
+  phone_mobile:
+  phone_home:
+  email:
+  preferred_contact:  # Mobile / Email / Text
+address:
+  street:
+  unit:
+  city:
+  state:              # 2-letter, e.g. CO
+  zip:
+
+employment:
+  status:             # Employed / Self-employed / Retired / ...
+  employer:
+  occupation:
+
+emergency_contact:
+  name:
+  relationship:
+  phone:
+
+insurance:
+  primary:
+    company:
+    plan:
+    member_id:
+    group_number:
+    phone:            # number on the back of the card
+    subscriber_name:
+    subscriber_dob:   # YYYY-MM-DD
+    subscriber_relationship: Self   # Self / Spouse / Child / Other
+  secondary:
+    company:
+    member_id:
+    group_number:
+
+care_team:
+  primary_doctor:
+  primary_doctor_phone:
+  referring_doctor:
+pharmacy:
+  name:
+  address:
+  phone:
+
+medications:          # one entry per medication
+  - name:
+    dose:
+    frequency:
+allergies:            # e.g. - Penicillin (hives)
+  -
+conditions:           # current/past diagnoses, e.g. - Asthma
+  -
+surgeries:            # e.g. - Appendectomy 2015
+  -
+family_history:       # e.g. - Father: heart disease
+  -
+lifestyle:
+  tobacco:            # Never / Former / Current
+  alcohol:            # None / Occasional / Weekly / Daily
+  drugs:              # None / ...
+  exercise:
+  caffeine:
+vitals:
+  height:             # e.g. 5'10"
+  weight:             # e.g. 175 lb
+
+# Photos to upload (paths in this VM), e.g. ~/formfill/files/insurance_front.jpg
+files:
+  insurance_front:
+  insurance_back:
+  id_front:
+  id_back:

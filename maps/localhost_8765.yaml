@@ -1,0 +1,22 @@
+# Test Clinic intake (test page)
+fields:
+  fname: name.first
+  lname: name.last
+  dob: dob
+  dob_text: dob|MM/DD/YYYY
+  sex: sex
+  phone: contact.phone_mobile
+  email: contact.email
+  addr1: address.street
+  city: address.city
+  state: address.state
+  zip: address.zip
+  ins_co: insurance.primary.company
+  member: insurance.primary.member_id
+  rel: insurance.primary.subscriber_relationship
+  tobacco: lifestyle.tobacco
+  cond: conditions
+  allergies: allergies
+  consent: skip
+  card: file:insurance_front
+  pharmacy: pharmacy.name

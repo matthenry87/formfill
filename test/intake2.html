@@ -1,0 +1,116 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mountain View Family Medicine – New Patient Packet (TEST)</title>
+<style>
+body{font-family:system-ui,sans-serif;margin:0;background:#f4f6f8;color:#1d2733}
+header{background:#1f5f8b;color:#fff;padding:14px 16px}header small{opacity:.8}
+main{padding:12px 16px;max-width:680px;margin:auto}
+section{background:#fff;border-radius:10px;padding:12px 14px;margin:12px 0;box-shadow:0 1px 3px #0002}
+h3{margin:4px 0 8px;font-size:17px;color:#1f5f8b}
+.row{display:flex;gap:8px}.row>div{flex:1}
+label{display:block;font-size:14px;margin:8px 0 3px}
+input[type=text],input[type=tel],input[type=email],input[type=date],select,textarea{width:100%;padding:9px;font-size:16px;border:1px solid #b9c3cc;border-radius:6px;box-sizing:border-box;background:#fff}
+fieldset{border:1px solid #d5dbe0;border-radius:6px;margin:8px 0}legend{font-size:14px}
+.opt label{display:inline-block;margin-right:12px}
+.fake-select{border:1px solid #b9c3cc;border-radius:6px;padding:9px;cursor:pointer;background:#fff}
+.fake-menu{display:none;border:1px solid #b9c3cc;border-top:0}.fake-menu div{padding:8px}
+.note{font-size:12px;color:#5b6773}
+</style></head><body>
+<header><b>Mountain View Family Medicine</b><br><small>New Patient Packet · TEST PAGE, nothing is submitted</small></header>
+<main><form onsubmit="event.preventDefault(); alert('Test only: not submitted')">
+
+<section><h3>1. Patient information</h3>
+<div class="row"><div><label for="pt_first">Legal first name *</label><input id="pt_first" name="patient[first]" required></div>
+<div><label for="pt_mi">M.I.</label><input id="pt_mi" name="patient[mi]" maxlength="1"></div></div>
+<label for="pt_last">Legal last name *</label><input id="pt_last" name="patient[last]" required>
+<label for="pt_pref">Preferred name</label><input id="pt_pref" name="patient[preferred]">
+<label>Date of birth *</label>
+<div class="row">
+ <div><select name="dob_m" aria-label="Birth month" required><option value="">Month</option>
+  <option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option></select></div>
+ <div><input name="dob_d" aria-label="Birth day" placeholder="DD" maxlength="2"></div>
+ <div><input name="dob_y" aria-label="Birth year" placeholder="YYYY" maxlength="4"></div>
+</div>
+<fieldset><legend>Sex *</legend><div class="opt">
+ <label><input type="radio" name="sex" value="male" required> Male</label>
+ <label><input type="radio" name="sex" value="female"> Female</label>
+ <label><input type="radio" name="sex" value="other"> Other</label></div></fieldset>
+<label for="marital">Marital status</label><select id="marital"><option value="">Select…</option><option>Single</option><option>Married</option><option>Divorced</option><option>Widowed</option><option>Domestic partner</option></select>
+<label for="lang">Preferred language</label><select id="lang"><option>English</option><option>Spanish</option><option>Other</option></select>
+<label for="ssn4">Last 4 of SSN</label><input id="ssn4" maxlength="4" inputmode="numeric">
+</section>
+
+<section><h3>2. Contact</h3>
+<label for="cell">Cell phone *</label><input id="cell" type="tel" required>
+<label for="em">Email</label><input id="em" type="email">
+<label for="street">Street address *</label><input id="street" required>
+<label for="apt">Apt / Unit</label><input id="apt">
+<div class="row"><div><label for="cty">City *</label><input id="cty" required></div>
+<div><label for="st">State *</label><select id="st" required><option value="">--</option><option value="AZ">Arizona</option><option value="CA">California</option><option value="CO">Colorado</option><option value="FL">Florida</option><option value="NM">New Mexico</option><option value="TX">Texas</option><option value="UT">Utah</option><option value="WY">Wyoming</option></select></div>
+<div><label for="zp">ZIP *</label><input id="zp" required inputmode="numeric"></div></div>
+<fieldset><legend>Best way to reach you</legend><div class="opt">
+ <label><input type="radio" name="contact_pref" value="call"> Phone call</label>
+ <label><input type="radio" name="contact_pref" value="text"> Text message</label>
+ <label><input type="radio" name="contact_pref" value="email"> Email</label></div></fieldset>
+</section>
+
+<section><h3>3. Emergency contact</h3>
+<label for="ec_name">Name *</label><input id="ec_name" required>
+<label for="ec_rel">Relationship</label><select id="ec_rel"><option value="">Select…</option><option>Spouse</option><option>Parent</option><option>Child</option><option>Sibling</option><option>Friend</option><option>Other</option></select>
+<label for="ec_ph">Phone *</label><input id="ec_ph" type="tel" required>
+</section>
+
+<section><h3>4. Insurance</h3>
+<label for="ins_name">Insurance carrier *</label><input id="ins_name" required>
+<label for="ins_id">Member / Policy #  *</label><input id="ins_id" required>
+<label for="ins_grp">Group #</label><input id="ins_grp">
+<label for="ins_holder">Policy holder name</label><input id="ins_holder">
+<label for="ins_rel">Patient's relationship to policy holder</label><select id="ins_rel"><option value="">Select…</option><option value="SELF">Self</option><option value="SPOUSE">Spouse</option><option value="CHILD">Child</option><option value="OTHER">Other</option></select>
+<label for="card_f">Insurance card – front</label><input id="card_f" type="file" accept="image/*">
+<label for="card_b">Insurance card – back</label><input id="card_b" type="file" accept="image/*">
+<label for="photo_id">Photo ID (driver license)</label><input id="photo_id" type="file" accept="image/*">
+</section>
+
+<section><h3>5. Health history</h3>
+<label for="pcp">Previous primary care provider</label><input id="pcp">
+<label for="pharm">Preferred pharmacy (name &amp; location)</label><input id="pharm">
+<label for="meds">Current medications (name, dose, how often)</label><textarea id="meds" rows="3"></textarea>
+<label for="alg">Allergies (medications, foods, latex)</label><textarea id="alg" rows="2"></textarea>
+<fieldset><legend>Have you ever been diagnosed with:</legend><div class="opt">
+ <label><input type="checkbox" name="hx" value="asthma"> Asthma</label>
+ <label><input type="checkbox" name="hx" value="diabetes"> Diabetes</label>
+ <label><input type="checkbox" name="hx" value="htn"> High blood pressure</label>
+ <label><input type="checkbox" name="hx" value="chol"> High cholesterol</label>
+ <label><input type="checkbox" name="hx" value="heart"> Heart disease</label>
+ <label><input type="checkbox" name="hx" value="depr"> Depression / anxiety</label>
+ <label><input type="checkbox" name="hx" value="sleep"> Sleep apnea</label>
+ <label><input type="checkbox" name="hx" value="thy"> Thyroid disease</label></div></fieldset>
+<label for="surg">Past surgeries / hospitalizations</label><textarea id="surg" rows="2"></textarea>
+<label for="fam">Family history</label><textarea id="fam" rows="2"></textarea>
+<div class="row"><div><label for="ht">Height</label><input id="ht"></div><div><label for="wt">Weight</label><input id="wt"></div></div>
+</section>
+
+<section><h3>6. Social history</h3>
+<fieldset><legend>Tobacco use</legend><div class="opt">
+ <label><input type="radio" name="tob" value="never"> Never</label>
+ <label><input type="radio" name="tob" value="former"> Former</label>
+ <label><input type="radio" name="tob" value="current"> Current</label></div></fieldset>
+<label for="etoh">Alcohol</label><select id="etoh"><option value="">Select…</option><option>None</option><option>Occasional</option><option>Weekly</option><option>Daily</option></select>
+<label for="occ">Occupation / employer</label><input id="occ">
+<label>How did you hear about us? (custom dropdown)</label>
+<div class="fake-select" id="heard" tabindex="0" onclick="this.nextElementSibling.style.display='block'">Choose…</div>
+<div class="fake-menu"><div onclick="pick(this)">Friend</div><div onclick="pick(this)">Google</div><div onclick="pick(this)">Insurance directory</div></div>
+</section>
+
+<section><h3>7. Consent</h3>
+<label><input type="checkbox" id="hipaa" required> I acknowledge receipt of the Notice of Privacy Practices *</label>
+<label><input type="checkbox" id="fin" required> I accept financial responsibility *</label>
+<label for="sig">Signature (type full name) *</label><input id="sig" required>
+<label for="sigdate">Date *</label><input id="sigdate" type="date" required>
+<p class="note">Embedded form below (iframe) – formfill can't reach this yet:</p>
+<iframe style="width:100%;height:70px;border:1px dashed #b9c3cc" srcdoc="<label style='font-family:sans-serif'>Referral source <input name='ref'></label>"></iframe>
+</section>
+<p><button type="submit" style="width:100%;padding:12px;font-size:17px;background:#1f5f8b;color:#fff;border:0;border-radius:8px">Submit (test)</button></p>
+</form></main>
+<script>function pick(el){const s=document.getElementById('heard');s.textContent=el.textContent;el.parentElement.style.display='none'}</script>
+</body></html>

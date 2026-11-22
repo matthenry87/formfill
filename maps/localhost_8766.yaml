@@ -1,0 +1,48 @@
+# Mountain View Family Medicine (test page)
+fields:
+  pt_first: name.first
+  pt_mi: name.middle
+  pt_last: name.last
+  pt_pref: name.preferred
+  dob_m: dob|MM
+  dob_d: dob|DD
+  dob_y: dob|YYYY
+  sex: sex
+  marital: marital_status
+  lang: language
+  ssn4: ssn_last4
+  cell: contact.phone_mobile
+  em: contact.email
+  street: address.street
+  apt: address.unit
+  cty: address.city
+  st: address.state
+  zp: address.zip
+  contact_pref: contact.preferred_contact
+  ec_name: emergency_contact.name
+  ec_rel: emergency_contact.relationship
+  ec_ph: emergency_contact.phone
+  ins_name: insurance.primary.company
+  ins_id: insurance.primary.member_id
+  ins_grp: insurance.primary.group_number
+  ins_holder: insurance.primary.subscriber_name
+  ins_rel: insurance.primary.subscriber_relationship
+  card_f: file:insurance_front
+  card_b: file:insurance_back
+  photo_id: file:id_front
+  pcp: care_team.primary_doctor
+  pharm: "{pharmacy.name} {pharmacy.address}"
+  meds: medications
+  alg: allergies
+  hx: conditions
+  surg: surgeries
+  fam: family_history
+  ht: vitals.height
+  wt: vitals.weight
+  tob: lifestyle.tobacco
+  etoh: lifestyle.alcohol
+  occ: "{employment.occupation} {employment.employer}"
+  hipaa: skip      # consent: you check it
+  fin: skip        # consent: you check it
+  sig: skip        # signature: you type it
+  sigdate: today|MM/DD/YYYY

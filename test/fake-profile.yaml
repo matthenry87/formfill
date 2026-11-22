@@ -1,0 +1,12 @@
+name: {first: Testy, last: McTestface}
+dob: 1990-04-07
+sex: Male
+contact: {phone_mobile: 555-010-0199, email: testy@example.com}
+address: {street: 123 Test St, city: Denver, state: CO, zip: "80202"}
+insurance:
+  primary: {company: Example Health, member_id: XZ123456789, subscriber_relationship: Self}
+pharmacy: {name: Test Pharmacy on Main}
+allergies: [Penicillin, Latex]
+conditions: [Asthma, High blood pressure]
+lifestyle: {tobacco: Former}
+files: {insurance_front: ~/formfill/test/card.png}

@@ -1,0 +1,9 @@
+# Personal data — never commit
+profile.yaml
+profile.yaml.age
+*.age
+files/
+
+# Python
+__pycache__/
+*.pyc

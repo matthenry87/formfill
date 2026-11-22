@@ -1,0 +1,51 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Test Clinic – Patient Intake</title>
+<style>body{font-family:sans-serif;margin:16px;max-width:600px}label{display:block;margin:10px 0 2px}
+input[type=text],input[type=tel],input[type=email],input[type=date],select,textarea{width:100%;padding:8px;font-size:16px;box-sizing:border-box}
+fieldset{margin:12px 0}</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.3.1/umd/react.production.min.js"></script>
+</head><body>
+<h2>Test Clinic – New Patient Intake (TEST PAGE)</h2>
+<form onsubmit="event.preventDefault(); alert('submitted (test)')">
+<label for="fname">First name *</label><input id="fname" name="fname" type="text" required>
+<label for="lname">Last name *</label><input id="lname" name="lname" type="text" required>
+<label for="dob">Date of birth *</label><input id="dob" name="dob" type="date" required>
+<label>Date of birth (text) <input name="dob_text" type="text" placeholder="MM/DD/YYYY"></label>
+<fieldset><legend>Sex assigned at birth *</legend>
+ <label><input type="radio" name="sex" value="M" required> Male</label>
+ <label><input type="radio" name="sex" value="F"> Female</label>
+ <label><input type="radio" name="sex" value="X"> Prefer not to say</label></fieldset>
+<label for="phone">Mobile phone</label><input id="phone" name="phone" type="tel">
+<label for="email">Email</label><input id="email" name="email" type="email">
+<label for="addr1">Street address</label><input id="addr1" type="text">
+<label for="city">City</label><input id="city" type="text">
+<label for="state">State</label><select id="state"><option value="">--</option><option value="CA">California</option><option value="CO">Colorado</option><option value="NY">New York</option></select>
+<label for="zip">ZIP</label><input id="zip" type="text">
+<label for="ins_co">Insurance company</label><input id="ins_co" type="text">
+<label for="member">Member / Subscriber ID</label><input id="member" type="text">
+<label for="rel">Relationship to subscriber</label><select id="rel"><option>Select…</option><option>Self</option><option>Spouse</option><option>Child</option></select>
+<fieldset><legend>Do you use tobacco?</legend>
+ <label><input type="radio" name="tobacco" value="never"> Never</label>
+ <label><input type="radio" name="tobacco" value="former"> Former smoker</label>
+ <label><input type="radio" name="tobacco" value="current"> Current</label></fieldset>
+<fieldset><legend>Check any conditions you have</legend>
+ <label><input type="checkbox" name="cond" value="asthma"> Asthma</label>
+ <label><input type="checkbox" name="cond" value="diabetes"> Diabetes</label>
+ <label><input type="checkbox" name="cond" value="htn"> High blood pressure</label></fieldset>
+<label for="allergies">List any allergies</label><textarea id="allergies" rows="2"></textarea>
+<label><input type="checkbox" id="consent"> I consent to treatment *</label>
+<label for="card">Upload insurance card (front)</label><input id="card" type="file" accept="image/*">
+<label for="pharmacy">Pharmacy (React-controlled)</label><div id="reactroot"></div>
+<p><button type="submit">Submit</button></p>
+</form>
+<script>
+const e = React.createElement;
+function Pharm(){ const [v,setV]=React.useState(''); return e('div',null,
+  e('input',{id:'pharmacy',type:'text',value:v,onChange:ev=>setV(ev.target.value),style:{width:'100%',padding:'8px',fontSize:'16px'}}),
+  e('small',{id:'pharm_echo'},'React state: '+v)); }
+try { ReactDOM; } catch(_) {}
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.3.1/umd/react-dom.production.min.js"></script>
+<script>ReactDOM.createRoot(document.getElementById('reactroot')).render(React.createElement(Pharm));</script>
+</body></html>
