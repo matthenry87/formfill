@@ -1,5 +1,15 @@
 # formfill
 
+**Fill a 46-field doctor's intake form on your phone in 1.5 seconds, without your AI agent ever seeing your data.**
+
+<p align="center">
+  <img src="docs/phone-1-patient.png" width="31%" alt="Patient information filled on the phone">
+  <img src="docs/phone-2-insurance-health.png" width="31%" alt="Insurance, card uploads and health history filled">
+  <img src="docs/phone-3-consent.png" width="31%" alt="Consent boxes and signature left for the user (orange)">
+</p>
+<p align="center"><sub>Real Chrome on a Pixel, filled from a fake demo profile.
+<b>Green</b> = filled · <b>Orange</b> = required, left for you (consent and signature are never filled).</sub></p>
+
 Fills web forms (doctor intake, check-in) in Chrome **on your Android phone**
 from an encrypted profile, in about a second.
 
@@ -8,8 +18,8 @@ labels and profile *key names*, writes the mapping, and runs the fill. It never
 sees your values: name, DOB, insurance IDs and medical history stay encrypted
 on disk and only exist decrypted in RAM while unlocked.
 
-## What it looks like
-A 46-field new-patient packet (`test/intake2.html`) filled in 1.5 s from the
+## Every section
+The same 46-field new-patient packet (`test/intake2.html`) filled in 1.5 s from the
 fake demo profile. Green = filled. Orange = required but left for you: the
 consent boxes and signature are never filled.
 
