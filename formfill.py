@@ -56,6 +56,12 @@ def ensure_adb():
 
 
 def load_profile():
+    override = os.environ.get("FORMFILL_PROFILE")  # plain-YAML test/demo profile, e.g. test/fake-profile.yaml
+    if override:
+        p = Path(os.path.expanduser(override))
+        if not p.is_file():
+            die(f"FORMFILL_PROFILE not found: {p}")
+        return yaml.safe_load(p.read_text()) or {}
     if UNLOCKED.exists():
         return yaml.safe_load(UNLOCKED.read_text()) or {}
     die("profile is locked. Run: formfill unlock")

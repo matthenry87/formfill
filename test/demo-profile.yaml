@@ -1,0 +1,37 @@
+# Fake profile for demos and README screenshots. Nothing here is real.
+# Use:  FORMFILL_PROFILE=~/formfill/test/demo-profile.yaml formfill fill
+name: {first: Testy, middle: Q, last: McTestface, preferred: Testy}
+dob: 1990-04-07
+sex: Male
+marital_status: Single
+language: English
+ssn_last4: "0000"
+contact:
+  phone_mobile: 555-010-0199
+  email: testy@example.com
+  preferred_contact: Text message
+address: {street: 123 Test St, unit: Apt 4, city: Denver, state: CO, zip: "80202"}
+emergency_contact: {name: Pat McTestface, relationship: Sibling, phone: 555-010-0142}
+insurance:
+  primary:
+    company: Example Health
+    member_id: XZ123456789
+    group_number: GRP-00042
+    subscriber_name: Testy McTestface
+    subscriber_relationship: Self
+care_team: {primary_doctor: Dr. Jane Example}
+pharmacy: {name: Test Pharmacy, address: 1 Main St, Denver}
+medications:
+  - Exampleprofen 200 mg, as needed
+  - Placebotin 10 mg, once daily
+allergies: [Penicillin, Latex]
+conditions: [Asthma, High blood pressure]
+surgeries: [Appendectomy (2010)]
+family_history: [Father - heart disease]
+vitals: {height: 5'10", weight: 170 lb}
+lifestyle: {tobacco: Former, alcohol: Occasional}
+employment: {occupation: Software tester, employer: Example Corp}
+files:
+  insurance_front: ~/formfill/test/card.png
+  insurance_back: ~/formfill/test/card.png
+  id_front: ~/formfill/test/card.png

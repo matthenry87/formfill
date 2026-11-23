@@ -8,6 +8,26 @@ labels and profile *key names*, writes the mapping, and runs the fill. It never
 sees your values: name, DOB, insurance IDs and medical history stay encrypted
 on disk and only exist decrypted in RAM while unlocked.
 
+## What it looks like
+A 46-field new-patient packet (`test/intake2.html`) filled in 1.5 s from the
+fake demo profile. Green = filled. Orange = required but left for you: the
+consent boxes and signature are never filled.
+
+<p>
+<img src="docs/1-patient.png" width="19%" alt="Patient information filled">
+<img src="docs/2-contact.png" width="19%" alt="Contact and emergency contact filled">
+<img src="docs/3-insurance.png" width="19%" alt="Insurance filled, including card uploads">
+<img src="docs/4-health.png" width="19%" alt="Health history filled">
+<img src="docs/5-social-consent.png" width="19%" alt="Consent and signature left for the user">
+</p>
+
+```
+$ formfill fill
+Filled in 1.5s on localhost:8766: 43 filled
+  required & still empty: hipaa, fin, sig
+Green = filled, red = couldn't fill, orange = required but empty. Review, sign, and submit yourself.
+```
+
 ## How it works
 
 ```
@@ -132,13 +152,20 @@ Put insurance card / ID photos in `~/formfill/files/` and list their paths under
 Field keys come from `formfill scan` (element id, else name, else `label:<text>`).
 
 ## Testing
-`test/` has two fake intake forms and a fake profile. Serve them and open them in phone Chrome:
+`test/` has two fake intake forms and two fake profiles. Serve a form and open it in phone Chrome:
 ```bash
 cd ~/formfill/test && python3 -m http.server 8766 --bind 127.0.0.1 &
 adb reverse tcp:8766 tcp:8766
 adb shell am start -a android.intent.action.VIEW -d http://localhost:8766/intake2.html com.android.chrome
 formfill scan
 ```
+To fill it with fake data instead of your real profile (no unlock needed), point
+`FORMFILL_PROFILE` at a plain-YAML profile:
+```bash
+FORMFILL_PROFILE=~/formfill/test/demo-profile.yaml formfill fill
+```
+`test/demo-profile.yaml` covers every field on `intake2.html`; it's what the
+screenshots above use.
 
 ## Wi-Fi
 The VM reaches the phone over its own virtual network (the default gateway),
